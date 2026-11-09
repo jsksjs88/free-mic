@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090909">
+<title>FREE MIC — Silver Edition</title>
+<style>
+:root{color-scheme:dark;--bg:#08090b;--panel:#141619;--line:#34383d;--silver:#d7dce2;--muted:#9299a2;--accent:#bfc7d1}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#30343b 0,#101216 42%,var(--bg) 78%);color:#f4f5f6;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;padding:22px 16px calc(32px + env(safe-area-inset-bottom))}
+main{max-width:520px;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;margin:10px 2px 22px}.brand{font-size:20px;font-weight:850;letter-spacing:2px}.brand span{color:#aeb7c2}.edition{font-size:10px;letter-spacing:1.5px;color:#d2d7de;border:1px solid #59616b;border-radius:30px;padding:7px 10px}
+.hero,.panel{background:linear-gradient(145deg,#1b1e22,#101215);border:1px solid var(--line);border-radius:22px;box-shadow:0 14px 35px #0008}.hero{padding:22px;text-align:center;margin-bottom:14px}.orb{width:76px;height:76px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;background:radial-gradient(circle at 35% 25%,#fff,#aab2bc 35%,#424951 72%,#20242a);box-shadow:0 0 35px #aab5c333;color:#111;font-size:31px}.status{font-size:12px;color:var(--muted);letter-spacing:1.4px}.level{height:9px;border-radius:20px;background:#292e34;overflow:hidden;margin-top:16px}.level>i{display:block;width:0;height:100%;background:linear-gradient(90deg,#7d8793,#eef2f6);border-radius:20px;transition:width .08s}
+.actions{display:flex;gap:10px;margin-top:18px}.btn{border:0;border-radius:14px;padding:14px 12px;font-weight:800;font-size:15px;flex:1}.start{background:linear-gradient(135deg,#f1f3f5,#9da6b1);color:#111}.stop{background:#292d32;color:#e6e9ed;border:1px solid #454b53}.panel{padding:18px;margin-top:14px}.heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}.heading b{font-size:14px;letter-spacing:.8px}.tag{font-size:10px;color:#aeb7c2;border:1px solid #424850;padding:5px 8px;border-radius:20px}.control{margin:17px 0}.row{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;font-size:13px}.row small{color:#cbd1d8;font-variant-numeric:tabular-nums}input[type=range]{width:100%;accent-color:#cbd2da;height:25px}.presets{display:grid;grid-template-columns:1fr 1fr;gap:9px}.preset{background:#20242a;border:1px solid #4a5058;color:#e6e9ed;padding:12px;border-radius:13px;font-weight:700}.preset.active{background:#d5dbe2;color:#101215;border-color:#fff}.note{font-size:12px;line-height:1.7;color:#aab0b8;margin:15px 3px 0}.warn{border:1px solid #6c5940;background:#211c15;color:#e8d7bc;padding:12px;border-radius:13px;font-size:12px;line-height:1.7;margin-top:14px}.foot{text-align:center;color:#717982;font-size:10px;margin-top:20px}
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><div class="brand">FREE <span>MIC</span></div><div class="edition">SILVER EDITION</div></div>
+  <section class="hero">
+    <div class="orb">♬</div>
+    <div class="status" id="status">MICROPHONE OFF</div>
+    <div class="level"><i id="meter"></i></div>
+    <div class="actions">
+      <button class="btn start" id="start">تشغيل المايك</button>
+      <button class="btn stop" id="stop" disabled>إيقاف</button>
+    </div>
+  </section>
+  <section class="panel">
+    <div class="heading"><b>🎚️ AUDIO EFFECTS</b><span class="tag">LIVE CONTROLS</span></div>
+    <div class="control"><div class="row"><label for="gain">MIC AMPLIFIER</label><small id="gainVal">100%</small></div><input id="gain" type="range" min="0" max="250" value="100"></div>
+    <div class="control"><div class="row"><label for="echo">SILVER CARD ECHO</label><small id="echoVal">25%</small></div><input id="echo" type="range" min="0" max="85" value="25"></div>
+    <div class="control"><div class="row"><label for="delay">ECHO DELAY</label><small id="delayVal">240 ms</small></div><input id="delay" type="range" min="80" max="850" step="10" value="240"></div>
+    <div class="control"><div class="row"><label for="reverb">REVERB</label><small id="reverbVal">15%</small></div><input id="reverb" type="range" min="0" max="80" value="15"></div>
+    <div class="heading" style="margin-top:20px"><b>QUICK PRESETS</b></div>
+    <div class="presets">
+      <button class="preset active" data-preset="silver">SILVER ECHO</button>
+      <button class="preset" data-preset="deep">DEEP SPACE</button>
+      <button class="preset" data-preset="clean">CLEAN MIC</button>
+      <button class="preset" data-preset="strong">LOUD MIC</button>
+    </div>
+  </section>
+  <div class="warn">مهم: استخدم سماعة سلكية أو سماعة رأس لتجنب رجوع صوت السماعة إلى المايك وحدوث صفير. ارفع المضخم تدريجيا؛ التضخيم العالي قد يسبب تشويشا.</div>
+  <p class="note">هذه الأداة تعالج صوت المايك وتسمّعك التأثير داخل Safari أثناء بقاء الصفحة مفتوحة. بسبب قيود iOS، لا تستطيع إرسال الصوت المعالج مباشرة كمدخل مايك إلى تطبيق Discord على نفس الآيفون.</p>
+  <div class="foot">FREE MIC • LOCAL AUDIO PROCESSING • NO AUDIO UPLOAD</div>
+</main>
+<script>
+let ctx,stream,source,gainNode,delayNode,feedback,wetGain,dryGain,master,analyser,raf,convolver,reverbMix;
+const $=id=>document.getElementById(id);
+function makeImpulse(c,duration=2.2,decay=2.8){
+ const rate=c.sampleRate,length=Math.floor(rate*duration),buf=c.createBuffer(2,length,rate);
+ for(let ch=0;ch<2;ch++){let data=buf.getChannelData(ch);for(let i=0;i<length;i++)data[i]=(Math.random()*2-1)*Math.pow(1-i/length,decay);}
+ return buf;
+}
+function setValues(){
+ if(!ctx)return;
+ gainNode.gain.setTargetAtTime(+$('gain').value/100,ctx.currentTime,.025);
+ const e=+$('echo').value/100;
+ wetGain.gain.setTargetAtTime(e*.72,ctx.currentTime,.03);
+ feedback.gain.setTargetAtTime(Math.min(.72,e*.78),ctx.currentTime,.03);
+ delayNode.delayTime.setTargetAtTime(+$('delay').value/1000,ctx.currentTime,.03);
+ dryGain.gain.setTargetAtTime(1-e*.28,ctx.currentTime,.03);
+ if(reverbMix)reverbMix.gain.setTargetAtTime(+$('reverb').value/100*.35,ctx.currentTime,.03);
+}
+function updateLabels(){
+ $('gainVal').textContent=$('gain').value+'%';
+ $('echoVal').textContent=$('echo').value+'%';
+ $('delayVal').textContent=$('delay').value+' ms';
+ $('reverbVal').textContent=$('reverb').value+'%';
+}
+['gain','echo','delay','reverb'].forEach(id=>$(id).addEventListener('input',()=>{updateLabels();setValues();}));
+function meter(){
+ if(!analyser)return;let data=new Uint8Array(analyser.fftSize);analyser.getByteTimeDomainData(data);
+ let sum=0;for(let x of data){let v=(x-128)/128;sum+=v*v;}
+ let rms=Math.sqrt(sum/data.length);$('meter').style.width=Math.min(100,rms*260)+'%';raf=requestAnimationFrame(meter);
+}
+$('start').onclick=async()=>{
+ try{
+  stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false},video:false});
+  ctx=new (window.AudioContext||window.webkitAudioContext)();
+  await ctx.resume();
+  source=ctx.createMediaStreamSource(stream);
+  gainNode=ctx.createGain();delayNode=ctx.createDelay(1.2);feedback=ctx.createGain();wetGain=ctx.createGain();dryGain=ctx.createGain();master=ctx.createGain();analyser=ctx.createAnalyser();analyser.fftSize=512;
+  convolver=ctx.createConvolver();convolver.buffer=makeImpulse(ctx);
+  reverbMix=ctx.createGain();reverbMix.gain.value=+$('reverb').value/100*.35;
+  source.connect(gainNode);
+  gainNode.connect(dryGain);dryGain.connect(master);
+  gainNode.connect(delayNode);delayNode.connect(wetGain);wetGain.connect(master);
+  delayNode.connect(feedback);feedback.connect(delayNode);
+  gainNode.connect(convolver);convolver.connect(reverbMix);reverbMix.connect(master);
+  master.connect(analyser);analyser.connect(ctx.destination);
+  setValues();$('status').textContent='MICROPHONE ON • LIVE MONITOR';$('start').disabled=true;$('stop').disabled=false;$('start').style.opacity='.45';meter();
+ }catch(e){$('status').textContent='MIC ACCESS ERROR';alert('ما قدرنا نشغل المايك. افتح الصفحة في Safari واسمح باستخدام المايك من إعدادات الموقع.');}
+};
+$('stop').onclick=()=>{
+ if(raf)cancelAnimationFrame(raf);
+ if(stream)stream.getTracks().forEach(t=>t.stop());
+ if(ctx)ctx.close();
+ stream=ctx=null;analyser=null;$('meter').style.width='0';$('status').textContent='MICROPHONE OFF';$('start').disabled=false;$('stop').disabled=true;$('start').style.opacity='1';
+};
+document.querySelectorAll('.preset').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('.preset').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+ const p=b.dataset.preset;
+ const vals=p==='silver'?[115,48,260,28]:p==='deep'?[105,68,520,58]:p==='clean'?[110,0,180,0]:[175,12,180,8];
+ ['gain','echo','delay','reverb'].forEach((id,i)=>$(id).value=vals[i]);updateLabels();setValues();
+});
+updateLabels();
+</script>
+</body></html>
